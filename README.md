@@ -26,13 +26,14 @@ frontend:
 
 ## Instalação
 
-Instale o projeto com npm, rodando dentro de cada pasta:
+Instale o projeto com npm em cada pasta, conforme orientações abaixo:
 
+Na pasta do backend:
 ```bash
   cd backend
   npm install
 ```
-
+ É necessário voltar a pasta anterior `cd..` (Linux) ou `cd ..` (Windows) e depois entrar na pasta do frontend:
 ```bash
   cd frontend
   npm install
@@ -57,7 +58,7 @@ Para rodar os testes, rode o seguinte comando
 Para verificar a cobertura dos testes, rode o seguinte comando
 
 ```bash
-  npm run coverage
+  npm run test:coverage
 ```
 
 ## Documentação da API

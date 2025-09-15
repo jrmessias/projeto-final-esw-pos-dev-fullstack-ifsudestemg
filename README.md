@@ -4,35 +4,38 @@
 
 # Projeto final - Engenharia de Software - Pós-graduação Full Stack - IF Sudeste MG
 
-Projeto final da disciplina de Engenharia de software no curso de Pós Graduação Latu Sensu em Desenvolvimento Full Stack no Instituto Federal Sudeste de Minas Gerais.
-
-
-
+Esta aplicação é um cadastro de pessoa, cadastro de empresa e funcionário (associação da pessoa com empresa).
 
 ## Autores
-
 - [@jrmessias](https://www.github.com/jrmessias) Israel Aparecido Messias Junior
 
+## Versões
+Versão utilizada do Node.js: 24.7.0
+* Especificada nos arquivos .node-version e .nvmrc
 
 ## Stack utilizada
-
-**Front-end:** React, Redux, TailwindCSS
-
-**Back-end:** Node, Express
-
+**Front-end:** 
+**Back-end:** Node.js, Express
 
 ## Documentação
+Este projeto possui duas pastas sendo:
 
-[Documentação](https://link-da-documentação)
+backend:
 
+frontend:
 
 ## Instalação
 
-Instale my-project com npm
+Instale o projeto com npm, rodando dentro de cada pasta:
 
 ```bash
-  npm install my-project
-  cd my-project
+  cd backend
+  npm install
+```
+
+```bash
+  cd frontend
+  npm install
 ```
 
 ## Variáveis de Ambiente
@@ -43,7 +46,6 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 `ANOTHER_API_KEY`
 
-
 ## Rodando os testes
 
 Para rodar os testes, rode o seguinte comando
@@ -52,15 +54,11 @@ Para rodar os testes, rode o seguinte comando
   npm run test
 ```
 
-
-## Deploy
-
-Para fazer o deploy desse projeto rode
+Para verificar a cobertura dos testes, rode o seguinte comando
 
 ```bash
-  npm run deploy
+  npm run coverage
 ```
-
 
 ## Documentação da API
 

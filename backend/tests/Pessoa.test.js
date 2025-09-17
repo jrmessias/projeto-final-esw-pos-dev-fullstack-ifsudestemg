@@ -1,6 +1,6 @@
 const Pessoa = require('../src/pessoa/Pessoa');
 
-describe("Produto", () => {
+describe("Pessoa", () => {
     let pessoa;
 
     const criarPessoaValida = (dadosParaSobrescrever = {}) => {

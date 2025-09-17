@@ -1,6 +1,7 @@
 module.exports = {
     reporters: [
         'default',
+        './imj-custom-reporter.js',
         ['jest-html-reporter', {
             outputPath: './test-report.html', // Output file path
             pageTitle: 'Relatório de testes',        // Title of the HTML report

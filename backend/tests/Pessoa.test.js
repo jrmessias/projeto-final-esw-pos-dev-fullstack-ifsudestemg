@@ -1,7 +1,17 @@
 const Pessoa = require('../src/pessoa/Pessoa');
+const Funcionario = require("../src/funcionario/Funcionario");
 
 describe("Pessoa", () => {
     let pessoa;
+
+    beforeEach(() => {
+        pessoa = criarPessoaValida();
+    });
+
+    afterEach(() => {
+        pessoa = null;
+        // console.log(`Pessoa: ${pessoa}`);
+    });
 
     const criarPessoaValida = (dadosParaSobrescrever = {}) => {
         const dadosPadroes = {
@@ -16,8 +26,6 @@ describe("Pessoa", () => {
     };
 
     it('Deve criar uma pessoa com os atributos corretos', () => {
-        pessoa = criarPessoaValida();
-
         expect(pessoa.nome).toBe('João Silva');
         expect(pessoa.cpf).toBe('12345678900');
         expect(pessoa.dataNascimento).toEqual(new Date('2010-04-26'));
@@ -63,30 +71,25 @@ describe("Pessoa", () => {
     });
 
     it('Deve alterar o email corretamente', () => {
-        pessoa = criarPessoaValida();
         pessoa.alterarEmail('novo@email.com');
 
         expect(pessoa.email).toBe('novo@email.com');
     });
 
     it('E-mail informado é invalido, não altera o e-mail', () => {
-        pessoa = criarPessoaValida();
-
-        expect(()=>pessoa.alterarEmail('novoempresa.com'))
+        expect(() => pessoa.alterarEmail('novoempresa.com'))
             .toThrow("O e-mail informado é inválido.")
-        expect(()=>pessoa.alterarEmail('email@empresa.com'))
+        expect(() => pessoa.alterarEmail('email@empresa.com'))
             .toThrow("O e-mail informado é igual ao atual.")
         expect(pessoa.email).toBe('email@empresa.com');
     });
 
     it('Não deve alterar o telefone se informado um dado inválido', () => {
-        pessoa = criarPessoaValida();
-
-        expect(()=>pessoa.alterarTelefone("888888888"))
+        expect(() => pessoa.alterarTelefone("888888888"))
             .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
-        expect(()=>pessoa.alterarTelefone("999999999999"))
+        expect(() => pessoa.alterarTelefone("999999999999"))
             .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
-        expect(()=>pessoa.alterarTelefone("abcdefgh"))
+        expect(() => pessoa.alterarTelefone("abcdefgh"))
             .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
     });
 
@@ -98,9 +101,7 @@ describe("Pessoa", () => {
     });
 
     it('Não pode altera o CPF', () => {
-        pessoa = criarPessoaValida();
-
-        expect(()=>pessoa.alterarCpf({cpf: "12345678901"}))
+        expect(() => pessoa.alterarCpf({cpf: "12345678901"}))
             .toThrow("Não é permitido alterar o CPF da pessoa.");
     });
 });

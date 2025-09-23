@@ -7,6 +7,11 @@ describe("Funcionário", () => {
         funcionario = criarFuncionarioValido();
     });
 
+    afterEach(() => {
+        funcionario = null;
+        // console.log(`Funcionário: ${funcionario}`);
+    });
+
     const criarFuncionarioValido = (dadosParaSobrescrever = {}) => {
         const dadosPadroes = {
             cpf: "12345678900",

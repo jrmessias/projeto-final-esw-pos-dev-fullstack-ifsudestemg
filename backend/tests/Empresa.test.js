@@ -7,6 +7,18 @@ describe("Empresa", () => {
         empresa = criarEmpresaValida();
     });
 
+    afterEach(() => {
+        empresa = null;
+        // console.log(`Empresa: ${empresa}`);
+        // Uso de Mock
+    });
+
+    // beforeAll(() => {
+    // });
+    //
+    // afterAll(() => {
+    // });
+
     const criarEmpresaValida = (dadosParaSobrescrever = {}) => {
         const dadosPadroes = {
             razaoSocial: "Minha Empresa LTDA",

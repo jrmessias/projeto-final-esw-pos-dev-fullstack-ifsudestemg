@@ -4,11 +4,7 @@ class Pessoa {
             throw new Error("O nome deve conter pelo menos 3 caracteres.");
         }
 
-        if (!cpf) {
-            throw new Error("CPF não informado.");
-        }
-
-        if ((cpf).length > 11 || (cpf).length < 11 || !/^\d{11}$/.test(cpf)) {
+        if (!cpf || (cpf).length > 11 || (cpf).length < 11 || !/^\d{11}$/.test(cpf)) {
             throw new Error("O CPF deve conter 11 dígitos numéricos.");
         }
 

@@ -68,8 +68,8 @@ class Empresa {
         this.email = email;
     }
 
-    alterarRazaoSocial(novaRazao) {
-        if (!novaRazao || novaRazao.length < 3) {
+    alterarRazaoSocial(razaoSocial) {
+        if (!razaoSocial || razaoSocial.length < 3) {
             throw new Error("A razão social deve conter pelo menos 3 caracteres.");
         }
 
@@ -77,15 +77,18 @@ class Empresa {
             throw new Error("Não é possível alterar a razão social de uma empresa inativa.");
         }
 
-        if (novaRazao === this.razaoSocial) {
+        if (razaoSocial === this.razaoSocial) {
             throw new Error("A nova razão social deve ser diferente da atual.");
         }
 
-        this.razaoSocial = novaRazao;
+        this.razaoSocial = razaoSocial;
     }
 
-    alterarNomeFantasia(novoNome) {
-        if (!novoNome || novoNome.length < 2) {
+    alterarNomeFantasia(nomeFantasia) {
+        console.error(nomeFantasia);
+        console.warn(nomeFantasia.length);
+        if (!nomeFantasia || nomeFantasia.length < 2) {
+
             throw new Error("O nome fantasia deve conter pelo menos 2 caracteres.");
         }
 
@@ -93,11 +96,11 @@ class Empresa {
             throw new Error("Não é possível alterar o nome fantasia de uma empresa inativa.");
         }
 
-        if (this.nomeFantasia === novoNome) {
+        if (this.nomeFantasia === nomeFantasia) {
             throw new Error("O novo nome fantasia deve ser diferente do atual.");
         }
 
-        this.nomeFantasia = novoNome;
+        this.nomeFantasia = nomeFantasia;
     }
 
     inativar() {

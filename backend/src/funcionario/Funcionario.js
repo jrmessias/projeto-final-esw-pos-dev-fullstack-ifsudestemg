@@ -1,5 +1,5 @@
 class Funcionario {
-    constructor(cpf, cnpj, dataAdmissao, cargo, salario) {
+    constructor(cpf, cnpj, dataAdmissao, matricula, cargo, salario) {
         if (!cpf) {
             throw new Error("CPF não informado.");
         }
@@ -14,6 +14,10 @@ class Funcionario {
 
         if ((cnpj).length > 14 || (cnpj).length < 14 || !/^\d{14}$/.test(cnpj)) {
             throw new Error("O CNPJ deve conter 14 dígitos numéricos.");
+        }
+
+        if ((matricula).length > 6 || (matricula).length < 6 || !/^\d{6}$/.test(matricula)) {
+            throw new Error("A matrícula deve conter 6 dígitos numéricos.");
         }
 
         if (!(dataAdmissao instanceof Date) || isNaN(dataAdmissao)) {
@@ -36,6 +40,7 @@ class Funcionario {
         this._cpf = cpf;
         this.cnpj = cnpj;
         this.dataAdmissao = dataAdmissao;
+        this._matricula = matricula;
         this.cargo = cargo;
         this.salario = salario;
         this._ativo = true;
@@ -45,12 +50,20 @@ class Funcionario {
         return this._cpf;
     }
 
+    get matricula(){
+        return this._matricula;
+    }
+
     get ativo(){
         return this._ativo;
     }
 
     alterarCpf(novoCpf) {
         throw new Error("Não é permitido alterar o CPF do funcionário.");
+    }
+
+    alterarMatricula(novaMatricula) {
+        throw new Error("Não é permitido alterar a matrícula do funcionário.");
     }
 
     alterarCnpj(cnpj) {

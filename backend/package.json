@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "npx jest",
+    "test": "npx jest --verbose --colors --coverage --reporters=default --reporters=jest-html-reporter",
     "test:coverage": "npx jest --coverage"
   },
   "dependencies": {

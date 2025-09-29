@@ -9,7 +9,6 @@ describe("Funcionário", () => {
 
     afterEach(() => {
         funcionario = null;
-        // console.log(`Funcionário: ${funcionario}`);
     });
 
     const criarFuncionarioValido = (dadosParaSobrescrever = {}) => {
@@ -17,18 +16,20 @@ describe("Funcionário", () => {
             cpf: "12345678900",
             cnpj: "12345678000199",
             dataAdmissao: new Date("2020-04-26"),
+            matricula: 123123,
             cargo: "Desenvolvedor",
             salario: 5000
         };
 
         const funcionario = {...dadosPadroes, ...dadosParaSobrescrever};
-        return new Funcionario(funcionario.cpf, funcionario.cnpj, funcionario.dataAdmissao, funcionario.cargo, funcionario.salario);
+        return new Funcionario(funcionario.cpf, funcionario.cnpj, funcionario.dataAdmissao, funcionario.matricula, funcionario.cargo, funcionario.salario);
     };
 
     it("Deve criar um funcionário com os atributos corretos", () => {
         expect(funcionario.cpf).toBe("12345678900");
         expect(funcionario.cnpj).toBe("12345678000199");
         expect(funcionario.dataAdmissao).toEqual(new Date("2020-04-26"));
+        expect(funcionario.matricula).toBe(123123);
         expect(funcionario.cargo).toBe("Desenvolvedor");
         expect(funcionario.salario).toBe(5000);
         expect(funcionario.dataDemissao).toBeUndefined();
@@ -66,6 +67,17 @@ describe("Funcionário", () => {
             .toThrow("A data de admissão não pode ser futura.");
     });
 
+    it('Deve lançar erro se a matrícula não for preenchido ou preenchido de forma correta', () => {
+        expect(() => criarFuncionarioValido({matricula: ""}))
+            .toThrow("A matrícula deve conter 6 dígitos numéricos.")
+        expect(() => criarFuncionarioValido({matricula: "12345"}))
+            .toThrow("A matrícula deve conter 6 dígitos numéricos.")
+        expect(() => criarFuncionarioValido({matricula: "1234567"}))
+            .toThrow("A matrícula deve conter 6 dígitos numéricos.")
+        expect(() => criarFuncionarioValido({matricula: "abcdefg"}))
+            .toThrow("A matrícula deve conter 6 dígitos numéricos.")
+    });
+
     it('Deve lançar erro se for informado cargo de forma errada', () => {
         expect(() => criarFuncionarioValido({cargo: ""}))
             .toThrow("O cargo deve conter pelo menos 2 caracteres.");
@@ -83,6 +95,11 @@ describe("Funcionário", () => {
     it('Não pode altera o CPF', () => {
         expect(() => funcionario.alterarCpf({cpf: "12345678901"}))
             .toThrow("Não é permitido alterar o CPF do funcionário.");
+    });
+
+    it('Não pode altera o Matrícula', () => {
+        expect(() => funcionario.alterarMatricula(123012))
+            .toThrow("Não é permitido alterar a matrícula do funcionário.");
     });
 
     it('Deve alterar o CNPJ', () => {
@@ -191,4 +208,6 @@ describe("Funcionário", () => {
         expect(() => funcionario.demitir())
             .toThrow("Funcionário já está demitido.");
     });
+
+    test.todo("Funcionário"); // Proposital
 });

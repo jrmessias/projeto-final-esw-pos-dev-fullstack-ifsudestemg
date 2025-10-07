@@ -85,10 +85,7 @@ class Empresa {
     }
 
     alterarNomeFantasia(nomeFantasia) {
-        console.error(nomeFantasia);
-        console.warn(nomeFantasia.length);
         if (!nomeFantasia || nomeFantasia.length < 2) {
-
             throw new Error("O nome fantasia deve conter pelo menos 2 caracteres.");
         }
 

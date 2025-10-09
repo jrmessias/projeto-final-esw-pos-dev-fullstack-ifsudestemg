@@ -45,7 +45,7 @@ describe("Empresa", () => {
                 {razaoSocial: ""},
                 {razaoSocial: "1"},
                 {razaoSocial: "22"}
-            ])('Deve lançar erro se a razão social for $razaoSocial', ({razaoSocial}) => {
+            ])('Deve gerar erro se a razão social for $razaoSocial', ({razaoSocial}) => {
                 expect(() => criarEmpresaValida({razaoSocial}))
                     .toThrow("A razão social deve conter pelo menos 3 caracteres.");
             });
@@ -55,7 +55,7 @@ describe("Empresa", () => {
             it.each([
                 {nomeFantasia: ""},
                 {nomeFantasia: "1"},
-            ])('Deve lançar erro se o nome fantasia for $nomeFantasia', ({nomeFantasia}) => {
+            ])('Deve gerar erro se o nome fantasia for $nomeFantasia', ({nomeFantasia}) => {
                 expect(() => criarEmpresaValida({nomeFantasia}))
                     .toThrow("O nome fantasia deve conter pelo menos 2 caracteres.");
             });
@@ -67,7 +67,7 @@ describe("Empresa", () => {
                 {cnpj: "0123456789012"},
                 {cnpj: "012345678901212"},
                 {cnpj: "abcdefghojk123"},
-            ])('Deve lançar erro se o CNPJ for $cnpj', ({cnpj}) => {
+            ])('Deve gerar erro se o CNPJ for $cnpj', ({cnpj}) => {
                 expect(() => criarEmpresaValida({cnpj}))
                     .toThrow("O CNPJ deve conter 14 dígitos numéricos.");
             });
@@ -77,7 +77,7 @@ describe("Empresa", () => {
             it.each([
                 {email: ""},
                 {email: "nomeempresa.com.br"},
-            ])('Deve lançar erro se o e-mail for $email', ({email}) => {
+            ])('Deve gerar erro se o e-mail for $email', ({email}) => {
                 expect(() => criarEmpresaValida({email}))
                     .toThrow("O e-mail informado é inválido.");
             });
@@ -89,7 +89,7 @@ describe("Empresa", () => {
                 {telefone: "123456789"},
                 {telefone: "123123123123"},
                 {telefone: "abcdefghij"},
-            ])('Deve lançar erro se o telfone for $telefone', ({telefone}) => {
+            ])('Deve gerar erro se o telfone for $telefone', ({telefone}) => {
                 expect(() => criarEmpresaValida({telefone}))
                     .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
             });
@@ -134,7 +134,7 @@ describe("Empresa", () => {
             {telefone: "11222222"},
             {telefone: "112222222222"},
             {telefone: "abcdefghij"},
-        ])('Deve lançar erro se o telefone for $telefone', ({telefone}) => {
+        ])('Deve gerar erro se o telefone for $telefone', ({telefone}) => {
             expect(() => empresa.alterarTelefone({telefone}))
                 .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
         });
@@ -154,7 +154,7 @@ describe("Empresa", () => {
             {email: "novoemail.com.br"},
             {email: "novoemail.combr"},
             {email: "novoemail"},
-        ])('Deve lançar erro se o e-mail for $email', ({email}) => {
+        ])('Deve gerar erro se o e-mail for $email', ({email}) => {
             expect(() => empresa.alterarEmail({email}))
                 .toThrow("O e-mail informado é inválido.");
         });
@@ -180,7 +180,7 @@ describe("Empresa", () => {
         //     {razaoSocial: ""},
         //     {razaoSocial: "a"},
         //     {razaoSocial: "bb"},
-        // ])('Deve lançar erro se a razão social for $razaoSocial', ({razaoSocial}) => {
+        // ])('Deve gerar erro se a razão social for $razaoSocial', ({razaoSocial}) => {
         //     expect(() => empresa.alterarRazaoSocial({razaoSocial}))
         //         .toThrow("A razão social deve conter pelo menos 3 caracteres.");
         // });
@@ -204,7 +204,7 @@ describe("Empresa", () => {
     //         {nomeFantasia: ""},
     //         {nomeFantasia: "a"},
     //         {nomeFantasia: "0"},
-    //     ])('Deve lançar erro se o nome fantasia for $nomeFantasia', ({nomeFantasia}) => {
+    //     ])('Deve gerar erro se o nome fantasia for $nomeFantasia', ({nomeFantasia}) => {
     //         expect(() => empresa.alterarNomeFantasia({nomeFantasia}))
     //             .toThrow("O nome fantasia deve conter pelo menos 2 caracteres.");
     //     });
@@ -219,13 +219,13 @@ describe("Empresa", () => {
     });
 
     //
-    it("Lançar erro se inativar uma empresa inativa", () => {
+    it("gerar erro se inativar uma empresa inativa", () => {
         empresa.inativar();
         expect(() => empresa.inativar())
             .toThrow("A empresa já está inativa.");
     });
 
-    it("Lançar erro se reativar uma empresa ativa", () => {
+    it("gerar erro se reativar uma empresa ativa", () => {
         expect(() => empresa.reativar())
             .toThrow("A empresa já está ativa.");
     });

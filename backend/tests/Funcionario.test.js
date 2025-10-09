@@ -35,7 +35,7 @@ describe("Funcionário", () => {
         expect(funcionario.dataDemissao).toBeUndefined();
     });
 
-    it('Deve lançar erro se o CPF da pessoa não for preenchido ou preenchido de forma incorreta', () => {
+    it('Deve gerar erro se o CPF da pessoa não for preenchido ou preenchido de forma incorreta', () => {
         expect(() => criarFuncionarioValido({cpf: ""}))
             .toThrow("CPF não informado.")
         expect(() => criarFuncionarioValido({cpf: "123456789000"}))
@@ -46,7 +46,7 @@ describe("Funcionário", () => {
             .toThrow("O CPF deve conter 11 dígitos numéricos.")
     });
 
-    it('Deve lançar erro se o CNPJ da empresa não for preenchido ou preenchido de forma incorreta', () => {
+    it('Deve gerar erro se o CNPJ da empresa não for preenchido ou preenchido de forma incorreta', () => {
         expect(() => criarFuncionarioValido({cnpj: ""}))
             .toThrow("CNPJ não informado.")
         expect(() => criarFuncionarioValido({cnpj: "012345698732"}))
@@ -57,7 +57,7 @@ describe("Funcionário", () => {
             .toThrow("O CNPJ deve conter 14 dígitos numéricos.")
     });
 
-    it('Deve lançar erro se a data de admissão for inválida', () => {
+    it('Deve gerar erro se a data de admissão for inválida', () => {
         expect(() => criarFuncionarioValido({dataAdmissao: new Date('20100425')}))
             .toThrow("A data de admissão deve ser uma data válida.");
 
@@ -67,7 +67,7 @@ describe("Funcionário", () => {
             .toThrow("A data de admissão não pode ser futura.");
     });
 
-    it('Deve lançar erro se a matrícula não for preenchido ou preenchido de forma correta', () => {
+    it('Deve gerar erro se a matrícula não for preenchido ou preenchido de forma correta', () => {
         expect(() => criarFuncionarioValido({matricula: ""}))
             .toThrow("A matrícula deve conter 6 dígitos numéricos.")
         expect(() => criarFuncionarioValido({matricula: "12345"}))
@@ -78,14 +78,14 @@ describe("Funcionário", () => {
             .toThrow("A matrícula deve conter 6 dígitos numéricos.")
     });
 
-    it('Deve lançar erro se for informado cargo de forma errada', () => {
+    it('Deve gerar erro se for informado cargo de forma errada', () => {
         expect(() => criarFuncionarioValido({cargo: ""}))
             .toThrow("O cargo deve conter pelo menos 2 caracteres.");
         expect(() => criarFuncionarioValido({cargo: "a"}))
             .toThrow("O cargo deve conter pelo menos 2 caracteres.");
     });
 
-    it('Deve lançar erro se o salario informado for zerado ou não numérico', () => {
+    it('Deve gerar erro se o salario informado for zerado ou não numérico', () => {
         expect(() => criarFuncionarioValido({salario: 0}))
             .toThrow("O salário deve ser maior que zero.");
         expect(() => criarFuncionarioValido({salario: "asfdasdf"}))
@@ -108,7 +108,7 @@ describe("Funcionário", () => {
             .toBe("12306547893641");
     });
 
-    it('Deve lançar erro se o CNPJ for inválido na alteração', () => {
+    it('Deve gerar erro se o CNPJ for inválido na alteração', () => {
         expect(() => funcionario.alterarCnpj(""))
             .toThrow("CNPJ não informado.")
         expect(() => funcionario.alterarCnpj(null))
@@ -127,7 +127,7 @@ describe("Funcionário", () => {
             .toBe(6000);
     });
 
-    it('Deve lançar erro se o salario informado for zerado, não numérico ou funcionário demitido, na alteração', () => {
+    it('Deve gerar erro se o salario informado for zerado, não numérico ou funcionário demitido, na alteração', () => {
         expect(() => funcionario.alterarSalario(0))
             .toThrow("O novo salário deve ser maior que zero.");
         expect(() => funcionario.alterarSalario(null))
@@ -145,7 +145,7 @@ describe("Funcionário", () => {
             .toBe(6000);
     });
 
-    it("Deve lançar erro se o incremento do salário for inválido ou funcionário está demitido", () => {
+    it("Deve gerar erro se o incremento do salário for inválido ou funcionário está demitido", () => {
         expect(() => funcionario.incrementarSalario(0))
             .toThrow("O incremento deve ser maior que zero.");
         expect(() => funcionario.incrementarSalario("a"))
@@ -160,7 +160,7 @@ describe("Funcionário", () => {
         expect(funcionario.salario).toBe(5500);
     });
 
-    it("Deve lançar erro se o decremento do salário for inválido, negativo ou funcionário está demitido", () => {
+    it("Deve gerar erro se o decremento do salário for inválido, negativo ou funcionário está demitido", () => {
         expect(() => funcionario.decrementarSalario(0))
             .toThrow("O decremento deve ser maior que zero.");
         expect(() => funcionario.decrementarSalario("a"))
@@ -169,7 +169,7 @@ describe("Funcionário", () => {
             .toThrow("O salário não pode ficar zero ou negativo.");
     });
 
-    it("Deve lançar erro ao decrementar salário de funcionário demitido", () => {
+    it("Deve gerar erro ao decrementar salário de funcionário demitido", () => {
         funcionario.demitir();
         expect(() => funcionario.decrementarSalario(500))
             .toThrow("Não é possível decrementar salário de funcionário demitido.");
@@ -180,7 +180,7 @@ describe("Funcionário", () => {
         expect(funcionario.salario).toBe(4000);
     });
 
-    it("Deve lançar erro se novo cargo for inválido ou funcionário está demitido", () => {
+    it("Deve gerar erro se novo cargo for inválido ou funcionário está demitido", () => {
         expect(() => funcionario.alterarCargo("a"))
             .toThrow("O novo cargo deve conter pelo menos 2 caracteres.");
         expect(() => funcionario.alterarCargo("Desenvolvedor"))

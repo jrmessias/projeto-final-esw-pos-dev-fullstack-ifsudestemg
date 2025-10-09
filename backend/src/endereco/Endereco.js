@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 class Endereco {
     constructor(cpf, cep, logradouro, numero, bairro, complemento) {
         if (!cpf) {
@@ -28,8 +30,28 @@ class Endereco {
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
-        this._municipio = null;
-        this._uf = null;
+    }
+
+    async buscarMunicipio(cep) {
+        const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+
+        if(data.erro) throw new Error("CEP inválido.");
+
+        const uf = data.uf;
+        const municipio = data.localidade;
+
+        this._uf = uf;
+        this._municipio = municipio;
+
+        return { uf, municipio };
+    }
+
+    get uf(){
+        return this._uf;
+    }
+
+    get municipio(){
+        return this._municipio;
     }
 
     alterarCpf(cpf) {

@@ -37,7 +37,7 @@ describe("Pessoa", () => {
         it.each([
             { nome: "Jo" },
             { nome: "" }
-        ])('Deve lançar erro se o nome for $nome', ({ nome }) => {
+        ])('Deve gerar erro se o nome for $nome', ({ nome }) => {
             expect(() => criarPessoaValida({ nome }))
                 .toThrow("O nome deve conter pelo menos 3 caracteres.");
         });
@@ -49,7 +49,7 @@ describe("Pessoa", () => {
             { cpf: "123456789000" },
             { cpf: "1234567890" },
             { cpf: "abcdefghojk" }
-        ])('Deve lançar erro se o CPF for $cpf', ({ cpf }) => {
+        ])('Deve gerar erro se o CPF for $cpf', ({ cpf }) => {
             expect(() => criarPessoaValida({ cpf }))
                 .toThrow("O CPF deve conter 11 dígitos numéricos.");
         });
@@ -70,7 +70,7 @@ describe("Pessoa", () => {
             { telefone: "99999999" },
             { telefone: "999999999999" },
             { telefone: "abcdefghijk" }
-        ])('Deve lançar erro se o telefone for $telefone', ({ telefone }) => {
+        ])('Deve gerar erro se o telefone for $telefone', ({ telefone }) => {
             expect(() => criarPessoaValida({ telefone }))
                 .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
         });
@@ -109,7 +109,7 @@ describe("Pessoa", () => {
             { telefone: "888888888" },
             { telefone: "999999999999" },
             { telefone: "abcdefgh" }
-        ])('Deve lançar erro se o telefone for $telefone', ({ telefone }) => {
+        ])('Deve gerar erro se o telefone for $telefone', ({ telefone }) => {
             expect(() => pessoa.alterarTelefone({ telefone }))
                 .toThrow("O telefone deve conter 10 ou 11 dígitos numéricos.");
         });

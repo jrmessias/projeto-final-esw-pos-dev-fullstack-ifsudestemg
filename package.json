@@ -4,7 +4,7 @@
   "description": "![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)",
   "main": "index.js",
   "scripts": {
-    "test:acceptance": "jest --testMatch '**/acceptance/**/*.steps.js'"
+    "test:acceptance": "jest --testMatch '**/tests/acceptance/**/*.steps.js'"
   },
   "repository": {
     "type": "git",

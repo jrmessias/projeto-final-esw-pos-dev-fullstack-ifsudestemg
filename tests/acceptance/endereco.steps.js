@@ -5,26 +5,15 @@ const Pessoa = require('../../backend/src/pessoa/Pessoa');
 
 // setDefaultLanguage('pt');
 
-const feature = path.join(__dirname, '../features/endereco.feature');
+const feature = loadFeature(path.join(__dirname, '../features/endereco.feature'));
 
-defineFeature(feature, (test) => {
-
-    test("Buscar localidade válida por CEP", () => {
-        given("que o usuário acessa o formulário de cadastro de pessoa", () => {
-
-        });
-        and("preencheu o formulário de cadastro de pessoa", () => {
-        });
-        when('informar o CEP "89900000"', () => {
-        });
-        and("clica em Buscar localidade", () => {
-        });
-        then('o sistema deverá buscar a localidade', () => {
-        });
-        and('o município será "São Miguel do Oeste"', () => {
-        });
-        and('a UF será "SC"', () => {
-        });
-
-    })
-});
+// defineFeature(feature, (test) => {
+//     test("Cadastrar empresa com sucesso", () => {
+//         given("quando preencher o formulário de cadastro de empresa com os dados válidos", () => {
+//         });
+//         and('clicar em "Salvar"', () => {
+//         });
+//         when('Então o sistema deve exibir a mensagem "Empresa cadastrada com sucesso"', () => {
+//         });
+//     })
+// });

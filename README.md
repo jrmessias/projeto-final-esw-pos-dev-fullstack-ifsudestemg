@@ -1,10 +1,9 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
+![Logo](frontend/img/logo.png)
 
 # Projeto final - Engenharia de Software - Pós-graduação Full Stack - IF Sudeste MG
 
-Esta aplicação é um cadastro de pessoa, cadastro de empresa e funcionário (associação da pessoa com empresa).
+Esta aplicação é uma simulação de cadastro de pessoa, cadastro de empresa, funcionário (associação de pessoa com empresa) e endereço (associação de pessoa com endereço).
 
 ## Autores
 - [@jrmessias](https://www.github.com/jrmessias) Israel Aparecido Messias Junior
@@ -14,8 +13,18 @@ Versão utilizada do Node.js: 24.7.0
 * Especificada nos arquivos .node-version e .nvmrc
 
 ## Stack utilizada
-**Front-end:** 
-**Back-end:** Node.js, Express
+**Front-end:**
+- Node.js
+- Http server
+- Jest
+- Puppeteer
+- Bootstrap
+
+**Back-end:**
+- Node.js
+- Express
+- Jest
+- Axios
 
 ## Documentação
 Este projeto possui duas pastas sendo:

@@ -58,10 +58,6 @@ class Endereco {
         throw new Error("Não é permitido alterar o CPF do endereço.");
     }
 
-    alterarCEP(cep) {
-
-    }
-
     alterarLogradouro(logradouro) {
         if (!logradouro) throw new Error("Logradouro não informado.");
 

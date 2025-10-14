@@ -41,7 +41,7 @@
                 <label for="cep" class="form-label">CEP</label>
                 <div class="input-group mb-3">
                     <input type="text" name="cep" id="cep" class="form-control" placeholder="Digite o CEP">
-                    <button class="btn btn-outline-secondary" type="button" id="busca-cep">Buscar localidade</button>
+                    <button class="btn btn-outline-secondary" type="button" id="btn-busca-cep">Buscar localidade</button>
                 </div>
             </div>
             <div class="mb-3">
@@ -73,8 +73,8 @@
                        placeholder="Digite o Bairro">
             </div>
             <div class="mb-3">
-                <label for="complemento" class="form-label">Endereço</label>
-                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Digite o Endereço">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Digite o Complemento">
             </div>
             <div class="d-flex justify-content-between">
                 <button type="submit" id="btn-salvar" class="btn btn-success">Salvar</button>
@@ -88,29 +88,34 @@
     </div>
 </div>
 <script>
-    document.getElementById("btn-salvar").onclick = () => {
-        const msgSuccess = document.getElementById("msg-success");
-        const msgError = document.getElementById("msg-error");
+    const msgSuccess = document.getElementById("msg-success");
+    const msgError = document.getElementById("msg-error");
 
+    document.getElementById("btn-salvar").onclick = () => {
         msgSuccess.innerHTML = "";
         msgError.innerHTML = "";
 
-        if (document.getElementById("cpf").value === "12345678901") {
-            msgError.innerHTML = "CPF já cadastrado";
-            return;
-        }
-
-        if (document.getElementById("email").value === "") {
-            msgError.innerHTML = "Dados inválidos";
-            return;
-        }
-
-        msgSuccess.innerHTML = "Pessoa cadastrada com sucesso";
+        msgSuccess.innerHTML = "Endereço cadastrado com sucesso";
         setTimeout(() => {
             msgSuccess.innerHTML = "";
             msgError.innerHTML = "";
+            document.getElementById("municipio").value = "";
+            document.getElementById("uf").value = "";
+            document.getElementById("estado").value = "";
         }, 1000);
+    };
 
+    document.getElementById("btn-busca-cep").onclick = () => {
+        if (document.getElementById("cep").value === "89900000") {
+            document.getElementById("municipio").value = "São Miguel do Oeste";
+            document.getElementById("uf").value = "SC";
+            document.getElementById("estado").value = "Santa Catarina";
+        }
+
+        if (document.getElementById("cep").value === "00000000") {
+            msgError.innerHTML = "";
+            msgError.innerHTML = "CEP não encontrado";
+        }
     };
 </script>
 </body>

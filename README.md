@@ -54,15 +54,17 @@ Para iniciar o frontend, via terminal, dentro da pasta frontend, rode o seguinte
 
 Será aberto o projeto nos seguintes endereços:
 
-- http://[ip]:4026
-- http://127.0.0.1:4026
-- http://localhost:4026
+- http://[ip]:5500
+- http://127.0.0.1:5500
+- http://localhost:5500
 
 Para acessar o frontend, adicione `frontend` ao final do endereço, ficando assim:
 
-- http://[ip]:4026/frontend
-- http://127.0.0.1:4026/frontend
-- http://localhost:4026/frontend
+- http://[ip]:5500/frontend
+- http://127.0.0.1:5500/frontend
+- http://localhost:5500/frontend
+
+> Foi utilizada a mesma porta da extensão Live Server do Visual Studio Code.
 
 ## Testes
 

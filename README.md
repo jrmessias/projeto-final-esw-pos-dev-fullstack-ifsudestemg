@@ -29,9 +29,9 @@ Versão utilizada do Node.js: 24.7.0
 ## Documentação
 Este projeto possui duas pastas sendo:
 
-backend:
+backend: classes e testes unitários e de integração.
 
-frontend:
+frontend: interface gráfica e testes de aceitação.
 
 ## Instalação
 
@@ -48,51 +48,36 @@ Na pasta do backend:
   npm install
 ```
 
-## Variáveis de Ambiente
+## Pré-visualização
+ 
+Para iniciar o frontend, via terminal, dentro da pasta frontend, rode o seguinte comando: `npm start`
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+Será aberto o projeto nos seguintes endereços:
 
-`API_KEY`
+- http://[ip]:4026
+- http://127.0.0.1:4026
+- http://localhost:4026
 
-`ANOTHER_API_KEY`
+Para acessar o frontend, adicione `frontend` ao final do endereço, ficando assim:
 
-## Rodando os testes
+- http://[ip]:4026/frontend
+- http://127.0.0.1:4026/frontend
+- http://localhost:4026/frontend
 
-Para rodar os testes, rode o seguinte comando
+## Testes
 
-```bash
-  npm run test
-```
+> É necessário estar executando a **Pré-visualização** para executar os testes de aceitação.
 
-Para verificar a cobertura dos testes, rode o seguinte comando
+*Para executar os testes, execute o seguinte comando:*
 
-```bash
-  npm run test:coverage
-```
+**Na pasta `backend`:**
 
-## Documentação da API
+`npm run test` ou  `npm run test:coverage`
 
-#### Retorna todos os itens
+> Será criado um arquivo test-report.html na pasta `backend`, contendo o relatório dos testes.
 
-```http
-  GET /api/items
-```
+**Na pasta `frontend`:**
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
+`npm run test:acceptance` ou  `npm run test:acceptance:coverage`
 
-#### Retorna um item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `string` | **Obrigatório**. O ID do item que você quer |
-
-#### add(num1, num2)
-
-Recebe dois números e retorna a sua soma.
-
+> Será criado um arquivo test-report.html na pasta `frontend`, contendo o relatório dos testes.

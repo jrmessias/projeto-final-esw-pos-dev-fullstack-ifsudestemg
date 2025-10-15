@@ -1,0 +1,278 @@
+<html><head><meta charset="utf-8"/><title>Relatório de testes unitários e integração</title><style type="text/css">:root {
+  --text-primary: #eee;
+  --text-secondary: #aaa;
+  --success: #2ecc71;
+  --success-bright: #1e3d2a;
+  --danger: #e74c3c;
+  --danger-bright: #3d1e1e;
+  --warning: #f39c12;
+  --warning-bright: #3d2c1e;
+  --panel: #1f1f1f;
+  --border: #444;
+  --disabled: #666;
+  background-color: #121212;
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+}
+body {
+  padding: 2rem 1rem;
+}
+.jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+#metadata-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.additional-information-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/** SUMMARY */
+#summary {
+  color: var(--text-primary);
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 0.5rem;
+  background: var(--panel);
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: var(--success);
+  border-left: 0.4rem solid var(--success);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: var(--danger);
+  border-left: 0.4rem solid var(--danger);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-pending {
+  color: var(--warning);
+  border-left: 0.4rem solid var(--warning);
+  padding-left: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.summary-empty {
+  color: var(--disabled);
+  border-left: 0.4rem solid var(--disabled);
+  margin-bottom: 0.15rem;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: var(--success-bright);
+  color: var(--success);
+}
+.test-result.failed {
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.test-result.pending {
+  background-color: var(--warning-bright);
+  color: var(--warning);
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed var(--danger);
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 1rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: var(--panel);
+  color: var(--text-secondary);
+  border: 0.15rem solid;
+  border-color: var(--panel);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info:hover {
+  border-color: var(--border);
+  cursor: pointer;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 1rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.85rem;
+}
+.suite-info .suite-time.warn {
+  background-color: var(--danger);
+  color: #fff;
+}
+.suite-info:before {
+  content: "\2303";
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg) translateY(0.15rem);
+}
+.suite-container[open] .suite-info:before {
+  transform: rotate(0deg) translateY(0.15rem);
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--panel);
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: var(--danger-bright);
+  color: var(--danger);
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: var(--text-primary);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><main class="jesthtml-content"><header><h1 id="title">Relatório de testes unitários e integração</h1></header><section id="metadata-container"><div id="timestamp">Started: 14/10/2025 23:03</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (4)</div><div class="summary-passed ">4 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (96)</div><div class="summary-passed ">92 passed</div><div class="summary-failed  summary-empty">0 failed</div><div class="summary-pending  summary-empty">0 pending</div></div></div></section><details id="suite-1" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/junior/Documentos/jr/github/projeto-final-esw-pos-dev-fullstack-ifsudestemg/backend/tests/Endereco.test.js</div><div class="suite-time">0.158s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Criar endereço com os dados corretos</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for 123456789000</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for 1234567890</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for abcdefghojk</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CEP</div><div class="test-title">Deve gerar erro se o CEP for 8990000</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CEP</div><div class="test-title">Deve gerar erro se o CEP for 899000000</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Validação do CEP</div><div class="test-title">Deve gerar erro se o CEP for abcdefghojk</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Não pode alterar o CPF</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Deve gerar erro se novo logradouro é inválido ou igual ao atual</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Deve gerar erro se novo número é inválido ou igual ao atual</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Deve gerar erro se novo complemento é inválido ou igual ao atual</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Deve gerar erro se novo bairro é inválido ou igual ao atual</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Altera o logradouro corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Altera o número corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Altera o complemneto corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Altera o bairro corretamente</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Buscar CEP</div><div class="test-title">Deve buscar o municipio e estado correto para o CEP 89900000</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Buscar CEP</div><div class="test-title">Deve buscar o municipio e estado correto para o CEP 89910000</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Endereço &gt; Buscar CEP</div><div class="test-title">Deve gerar erro ao informar CEP inválido</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result todo"><div class="test-info"><div class="test-suitename">Endereço</div><div class="test-title">Endereço</div><div class="test-status">todo</div><div class="test-duration"> </div></div></div></div></details><details id="suite-2" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/junior/Documentos/jr/github/projeto-final-esw-pos-dev-fullstack-ifsudestemg/backend/tests/Empresa.test.js</div><div class="suite-time">0.056s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Criar uma empresa com os atributos corretos</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação da razão social</div><div class="test-title">Deve gerar erro se a razão social for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação da razão social</div><div class="test-title">Deve gerar erro se a razão social for 1</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação da razão social</div><div class="test-title">Deve gerar erro se a razão social for 22</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do nome fantasia</div><div class="test-title">Deve gerar erro se o nome fantasia for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do nome fantasia</div><div class="test-title">Deve gerar erro se o nome fantasia for 1</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do CNPJ</div><div class="test-title">Deve gerar erro se o CNPJ for </div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do CNPJ</div><div class="test-title">Deve gerar erro se o CNPJ for 0123456789012</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do CNPJ</div><div class="test-title">Deve gerar erro se o CNPJ for 012345678901212</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do CNPJ</div><div class="test-title">Deve gerar erro se o CNPJ for abcdefghojk123</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for nomeempresa.com.br</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telfone for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telfone for 123456789</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telfone for 123123123123</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validação dos dados da empresa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telfone for abcdefghij</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Alterar telefone corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Alterar e-mail corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Alterar razão social corretamente</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Alterar nome fantasia corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Reativar uma empresa corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do telefone</div><div class="test-title">Deve gerar erro se o telefone for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do telefone</div><div class="test-title">Deve gerar erro se o telefone for 11222222</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do telefone</div><div class="test-title">Deve gerar erro se o telefone for 112222222222</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do telefone</div><div class="test-title">Deve gerar erro se o telefone for abcdefghij</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for </div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for novoemail.com.br</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for novoemail.combr</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa &gt; Validar alteração do e-mail</div><div class="test-title">Deve gerar erro se o e-mail for novoemail</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">gerar erro se inativar uma empresa inativa</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">gerar erro se reativar uma empresa ativa</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result todo"><div class="test-info"><div class="test-suitename">Empresa</div><div class="test-title">Empresa</div><div class="test-status">todo</div><div class="test-duration"> </div></div></div></div></details><details id="suite-3" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/junior/Documentos/jr/github/projeto-final-esw-pos-dev-fullstack-ifsudestemg/backend/tests/Pessoa.test.js</div><div class="suite-time">0.047s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Criar pessoa com os atributos corretos</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do nome</div><div class="test-title">Deve gerar erro se o nome for Jo</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do nome</div><div class="test-title">Deve gerar erro se o nome for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for 123456789000</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for 1234567890</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do CPF</div><div class="test-title">Deve gerar erro se o CPF for abcdefghojk</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Validação da data de nascimento</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Validação do e-mail</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telefone for 99999999</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telefone for 999999999999</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação do telefone</div><div class="test-title">Deve gerar erro se o telefone for abcdefghijk</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Não pode alterar o CPF</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Alterar e-mail corretamente</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Alterar telefone corretamente</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Não altera o e-mail, se inválido</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação ao alterar o telefone</div><div class="test-title">Deve gerar erro se o telefone for 888888888</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação ao alterar o telefone</div><div class="test-title">Deve gerar erro se o telefone for 999999999999</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Pessoa &gt; Validação ao alterar o telefone</div><div class="test-title">Deve gerar erro se o telefone for abcdefgh</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result todo"><div class="test-info"><div class="test-suitename">Pessoa</div><div class="test-title">Pessoa</div><div class="test-status">todo</div><div class="test-duration"> </div></div></div></div></details><details id="suite-4" class="suite-container" open=""><summary class="suite-info"><div class="suite-path">/home/junior/Documentos/jr/github/projeto-final-esw-pos-dev-fullstack-ifsudestemg/backend/tests/Funcionario.test.js</div><div class="suite-time">0.065s</div></summary><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve criar um funcionário com os atributos corretos</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o CPF da pessoa não for preenchido ou preenchido de forma incorreta</div><div class="test-status">passed</div><div class="test-duration">0.014s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o CNPJ da empresa não for preenchido ou preenchido de forma incorreta</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se a data de admissão for inválida</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se a matrícula não for preenchido ou preenchido de forma correta</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se for informado cargo de forma errada</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o salario informado for zerado ou não numérico</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Não pode altera o CPF</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Não pode altera o Matrícula</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve alterar o CNPJ</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o CNPJ for inválido na alteração</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve alterar o salário</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o salario informado for zerado, não numérico ou funcionário demitido, na alteração</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve alterar o salário corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o incremento do salário for inválido ou funcionário está demitido</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve incrementar o salário corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se o decremento do salário for inválido, negativo ou funcionário está demitido</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro ao decrementar salário de funcionário demitido</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve decrementar o salário corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve gerar erro se novo cargo for inválido ou funcionário está demitido</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve alterar o cargo corretamente</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve demitir o funcionário zerando salário e removendo cargo</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Deve demitir o funcionário zerando salário e removendo cargo</div><div class="test-status">passed</div><div class="test-duration"> </div></div></div><div class="test-result todo"><div class="test-info"><div class="test-suitename">Funcionário</div><div class="test-title">Funcionário</div><div class="test-status">todo</div><div class="test-duration"> </div></div></div></div></details></main></body></html>

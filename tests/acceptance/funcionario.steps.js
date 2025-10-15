@@ -7,7 +7,7 @@ const feature = loadFeature(path.join(__dirname, '../features/funcionario.featur
 defineFeature(feature, (test) => {
     let browser, page;
 
-    const url = 'http://127.0.0.1:4026/frontend/funcionario.html'
+    const url = 'http://127.0.0.1:5500/frontend/funcionario.html'
 
     beforeAll(async () => {
         browser = await puppeteer.launch({

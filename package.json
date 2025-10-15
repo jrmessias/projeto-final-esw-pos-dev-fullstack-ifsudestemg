@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server -p 4026 -o /frontend",
     "test:acceptance": "jest --testMatch '**/tests/acceptance/**/*.steps.js'",
-    "test:acceptance:report": "jest --verbose --colors --coverage --reporters=default --reporters=jest-html-reporter --testMatch '**/tests/acceptance/**/*.steps.js'"
+    "test:acceptance:coverage": "jest --verbose --colors --coverage --reporters=default --reporters=jest-html-reporter --testMatch '**/tests/acceptance/**/*.steps.js'"
   },
   "repository": {
     "type": "git",

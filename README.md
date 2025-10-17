@@ -80,4 +80,4 @@ Para acessar o frontend, adicione `frontend` ao final do endereço, ficando assi
 
 `npm run test:acceptance` ou  `npm run test:acceptance:coverage`
 
-> Será criado um arquivo test-report.html na pasta `frontend`, contendo o relatório dos testes.
+> Será criado um arquivo test-report.html na raiz, contendo o relatório dos testes.

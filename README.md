@@ -1,6 +1,4 @@
 
-![Logo](frontend/img/logo.png)
-
 # Projeto final - Engenharia de Software - Pós-graduação Full Stack - IF Sudeste MG
 
 Esta aplicação é uma simulação de cadastro de pessoa, cadastro de empresa, funcionário (associação de pessoa com empresa) e endereço (associação de pessoa com endereço).
